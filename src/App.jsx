@@ -1,28 +1,30 @@
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Home from "./home";
-import About from "./AboutUs";
-import Contact from "./contact";
+import React from "react";
+import { useRef } from "react";
+import { useEffect } from "react";
+import { useState } from "react";
 
-function App() {
-  return (
-    <>
-      <div>
-        <ul>
-          <li><a href="/home">HOME</a></li>
-          <li><a href="/AboutUs">ABOUT</a></li>
-          <li><a href="/contact">CONTACT</a></li>
-        </ul>
-      </div>
 
-      <Router>
-        <Routes>
-          <Route path="/home" element={<Home />} />
-          <Route path="/AboutUs" element={<About />} />
-          <Route path="/contact" element={<Contact />} />
-        </Routes>
-      </Router>
-    </>
-  );
+function App(){
+  const ref=useRef(false)
+  const [count,setcount]=useState(0);
+const [data,setdata]=useState(0);
+
+
+useEffect(()=>{
+  if(ref.current)return;
+  setdata(data+1)
+  alert("welcome to the page")
+  ref.current=true
+
+},[count])
+
+
+return(
+  <>
+    <button onClick={()=>setcount(count+1)}>count{count}</button>
+    <button onClick={()=>setdata(data+1)}>update{data}</button>
+    <button onClick={()=>setdata(()=>{setdata(0),setcount(0)})}>reset</button>
+  </>
+)
 }
-
-export default App;
+export default App
