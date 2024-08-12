@@ -1,27 +1,27 @@
 import React from "react";
 import { useEffect } from "react";
 import { useLocation,useNavigate } from "react-router-dom";
-function Home() {
+function About() {
   const location = useLocation();
   const navigate = useNavigate();
 
   useEffect(() => {
     if (location.state?.from === "home") {
-      alert("You are already on Home Page");
+      alert("Navigated from Home Page");
     } else if (location.state?.from === "about") {
-      alert("Navigated from About Page");
+      alert("You are already on About Page");
     } else if (location.state?.from === "contact") {
       alert("Navigated from Contact Page");
     }
     })
     const GoToHome = () => {
-      navigate("/Home", { state: { from: "home" } })
+      navigate("/Home", { state: { from: "about" } })
     };
     const GoToAbout = () => {
-      navigate("/AboutUs", { state: { from: "home" } });
+      navigate("/AboutUs", { state: { from: "about" } });
     };
     const GoToContact = () => {
-      navigate("/Contact", { state: { from: "home" } })
+      navigate("/Contact", { state: { from: "about" } })
     };
 
 
@@ -31,8 +31,8 @@ function Home() {
     <button onClick={GoToAbout}>ABOUT</button>
     <button onClick={GoToContact}>CONTACT</button>
 
-      <h1>I AM HOME PAGE</h1>
+      <h1>I AM ABOUT PAGE</h1>
     </>
   );
 }
-export default Home
+export default About
