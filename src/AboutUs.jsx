@@ -1,6 +1,6 @@
 import React from "react";
 import { useEffect } from "react";
-import { useLocation,useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 function About() {
   const location = useLocation();
   const navigate = useNavigate();
@@ -13,26 +13,43 @@ function About() {
     } else if (location.state?.from === "contact") {
       alert("Navigated from Contact Page");
     }
-    })
-    const GoToHome = () => {
-      navigate("/Home", { state: { from: "about" } })
-    };
-    const GoToAbout = () => {
-      navigate("/AboutUs", { state: { from: "about" } });
-    };
-    const GoToContact = () => {
-      navigate("/Contact", { state: { from: "about" } })
-    };
-
+  });
+  const GoToHome = () => {
+    navigate("/Home", { state: { from: "about" } });
+  };
+  const GoToAbout = () => {
+    navigate("/AboutUs", { state: { from: "about" } });
+  };
+  const GoToContact = () => {
+    navigate("/Contact", { state: { from: "about" } });
+  };
 
   return (
     <>
-    <button onClick={GoToHome}>HOME</button>
-    <button onClick={GoToAbout}>ABOUT</button>
-    <button onClick={GoToContact}>CONTACT</button>
+      <button
+        type="button"
+        className="btn btn-outline-primary"
+        onClick={GoToHome}
+      >
+        HOME
+      </button>
+      <button
+        type="button"
+        className="btn btn-outline-primary"
+        onClick={GoToAbout}
+      >
+        ABOUT
+      </button>
+      <button
+        type="button"
+        className="btn btn-outline-primary"
+        onClick={GoToContact}
+      >
+        CONTACT
+      </button>
 
-      <h1>I AM ABOUT PAGE</h1>
+      <h1 style={{ color: "blue", marginTop: "15px" }}>I AM ABOUT PAGE</h1>
     </>
   );
 }
-export default About
+export default About;

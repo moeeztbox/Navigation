@@ -1,6 +1,6 @@
-import React from "react";
 import { useEffect } from "react";
-import { useLocation,useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+
 function Home() {
   const location = useLocation();
   const navigate = useNavigate();
@@ -13,26 +13,52 @@ function Home() {
     } else if (location.state?.from === "contact") {
       alert("Navigated from Contact Page");
     }
-    })
-    const GoToHome = () => {
-      navigate("/Home", { state: { from: "home" } })
-    };
-    const GoToAbout = () => {
-      navigate("/AboutUs", { state: { from: "home" } });
-    };
-    const GoToContact = () => {
-      navigate("/Contact", { state: { from: "home" } })
-    };
-
+  });
+  const GoToHome = () => {
+    navigate("/Home", { state: { from: "home" } });
+  };
+  const GoToAbout = () => {
+    navigate("/AboutUs", { state: { from: "home" } });
+  };
+  const GoToContact = () => {
+    navigate("/Contact", { state: { from: "home" } });
+  };
 
   return (
     <>
-    <button onClick={GoToHome}>HOME</button>
-    <button onClick={GoToAbout}>ABOUT</button>
-    <button onClick={GoToContact}>CONTACT</button>
+      <button
+        style={{
+          marginRight: "15px",
+          backgroundColor: "green",
+          color: "yellow",
+        }}
+        onClick={GoToHome}
+      >
+        HOME
+      </button>
+      <button
+        style={{
+          marginRight: "15px",
+          backgroundColor: "green",
+          color: "yellow",
+        }}
+        onClick={GoToAbout}
+      >
+        ABOUT
+      </button>
+      <button
+        style={{
+          marginRight: "15px",
+          backgroundColor: "green",
+          color: "yellow",
+        }}
+        onClick={GoToContact}
+      >
+        CONTACT
+      </button>
 
-      <h1>I AM HOME PAGE</h1>
+      <h1 style={{ backgroundColor: "black", color: "red" }}>I AM HOME PAGE</h1>
     </>
   );
 }
-export default Home
+export default Home;
