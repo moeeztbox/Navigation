@@ -1,20 +1,14 @@
-import React from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import Home from "./Home";
-import About from "./AboutUs";
-import Contact from "./Contact";
+import { useState } from "react";
+import FeedBackData from "./FeedBackData";
+import FeedBackList from "./FeedBackList";
 
-function App() {
-  return (
+function App(){
+
+  const [feedback,setfeedback]=useState(FeedBackData)
+  return(
     <>
-      <Router>
-        <Routes>
-          <Route path="/Home" element={<Home />} />
-          <Route path="/AboutUs" element={<About />} />
-          <Route path="/Contact" element={<Contact />} />
-        </Routes>
-      </Router>
+      <FeedBackList feedback={feedback}/>
     </>
-  );
+  )
 }
-export default App;
+export default App
