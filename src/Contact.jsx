@@ -1,18 +1,40 @@
-import { Number } from "./App"
-import React from "react"
+import React, { useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 
-function Contact(){
+function Contact() {
+  const location = useLocation();
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (location.state && location.state.from) {
+      alert(`Navigated from ${location.state.from}`);
+    }
+  }, [location]);
 
-    return(
-        <>
-        <h3 style={{color:"white"}}>I AM CONTACT PAGE</h3>
-        <Number.Consumer>
-            {(num)=>{
-               return <h1 style={{color:"black"}}>My Number Is {num}</h1>
-            }
-            }
-        </Number.Consumer>
-        </>
-    )
+  return (
+    <>
+      <button
+        onClick={() => {
+          navigate("/Home", { state: { from: "ContactPage" } });
+        }}
+      >
+        HOME
+      </button>
+      <button
+        onClick={() => {
+          navigate("/AboutUs", { state: { from: "ContactPage" } });
+        }}
+      >
+        ABOUT
+      </button>
+      <button
+        onClick={() => {
+          navigate("/Contact", { state: { from: "ContactPage" } });
+        }}
+      >
+        CONTACT
+      </button>
+    </>
+  );
 }
-export default Contact
+
+export default Contact;

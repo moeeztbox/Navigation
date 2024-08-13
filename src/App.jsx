@@ -1,31 +1,20 @@
 import React from "react";
-import { createContext } from "react";
-import Contact from "./Contact";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./Home";
 import About from "./AboutUs";
-
-const Number = createContext();
-const Name=createContext();
-const Abouts=createContext();
+import Contact from "./Contact";
 
 function App() {
-  
-
   return (
     <>
-      <Number.Provider value={"123456"}>
-        <Name.Provider value={"Moeez"}>
-          <Abouts.Provider value={"Graduation"}>
-            <Home/>
-            <About/>
-            <Contact />
-          </Abouts.Provider>
-        </Name.Provider>
-      </Number.Provider>
+      <Router>
+        <Routes>
+          <Route path="/Home" element={<Home />} />
+          <Route path="/AboutUs" element={<About />} />
+          <Route path="/Contact" element={<Contact />} />
+        </Routes>
+      </Router>
     </>
   );
 }
 export default App;
-export {Name};
-export {Number};
-export {Abouts};
