@@ -1,20 +1,11 @@
 import React, { useState } from "react";
-import Form from "./Form";
-import { v4 as uuidv4 } from "uuid";
-import FormOutput from "./FormOutput";
-function App() {
-  const [feedback, setfeedback] = useState([]);
 
-  const addFeedBack = (newFeedBack) => {
-    newFeedBack.id = uuidv4();
-    setfeedback([...feedback, newFeedBack]);
-  };
-  return (
-    <>
-      <Form handleAdd={addFeedBack} />
-     <FormOutput output={feedback}/>
-    </>
-  );
+import './index.css'
+function App() {
+  
+  return <h1 className="text-3xl font-bold underline">
+  Hello world!
+</h1>
 }
 
 export default App;
