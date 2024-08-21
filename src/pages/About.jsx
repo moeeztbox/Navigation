@@ -21,7 +21,7 @@ function About() {
       <p className="text-lg text-gray-400">
         Layout By:
         <a className="text-black" href="https://twitter.com/hassibmoddasser">
-          Hassib Moddasser
+          Moeez Jamil
         </a>
       </p>
     </>
