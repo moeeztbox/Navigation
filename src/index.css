@@ -3,7 +3,7 @@
 @tailwind utilities; */
 
 .tablehead th {
-  background-color: blue;
+  background-color: rgb(202, 245, 93);
 }
 a {
   text-decoration: none;
