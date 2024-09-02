@@ -1,10 +1,12 @@
 import React, { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { ExpertContext } from "./ExpertContext";
+import { v4 as uuidv4 } from "uuid";
 
 function AddExpert() {
   const { addExpert } = useContext(ExpertContext);
   const navigate = useNavigate();
+
   const [data, setdata] = useState({
     Name: "",
     TaskTitle: "",
@@ -17,15 +19,17 @@ function AddExpert() {
 
   const HandleSubmit = (e) => {
     e.preventDefault();
+
     const currentTime = new Date().toLocaleTimeString();
+
     const expertWithTime = {
       ...data,
       Time: currentTime,
+      id: uuidv4(),
     };
+
     addExpert(expertWithTime);
-    localStorage.setItem(data.Name, JSON.stringify(expertWithTime));
     navigate("/");
-    console.log(data);
   };
 
   return (
@@ -50,7 +54,7 @@ function AddExpert() {
             <label htmlFor="Task Title">Task Title</label>
             <input
               onChange={HandleChange}
-              className="input"
+              className="input mt-2 mb-3"
               type="text"
               name="TaskTitle"
               placeholder="Enter your task title"
@@ -59,7 +63,7 @@ function AddExpert() {
             <label htmlFor="Status">Status</label>
             <input
               onChange={HandleChange}
-              className="input mb-3 "
+              className="input mb-3 mt-2 "
               type="text"
               name="Status"
               placeholder="Enter your status"

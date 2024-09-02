@@ -9,13 +9,15 @@ function Table() {
   const handleAddExpert = () => {
     navigate("/add-expert");
   };
-  const OpenProfile = (e) => {
-    const name = e.target.innerText;
-    const hello = JSON.parse(localStorage.getItem(name));
-    localStorage.setItem("data", JSON.stringify(hello));
+
+  const OpenProfile = (e, expertId) => {
+    e.preventDefault(); // Prevent default anchor click behavior
+
+    const expertData = experts.find((expert) => expert.id === expertId);
+
+    localStorage.setItem("data", JSON.stringify(expertData));
     navigate("/profile");
   };
-
   return (
     <>
       <div className="container mt-5">
@@ -31,7 +33,7 @@ function Table() {
             Add Expert
           </button>
         </div>
-        <table className="table  mt-3">
+        <table className="table mt-3">
           <thead className="tablehead">
             <tr>
               <th scope="col">Name</th>
@@ -41,10 +43,10 @@ function Table() {
             </tr>
           </thead>
           <tbody>
-            {experts.map((expert, index) => (
-              <tr key={index}>
+            {experts.map((expert) => (
+              <tr key={expert.id}>
                 <td>
-                  <a onClick={OpenProfile} href="">
+                  <a onClick={(e) => OpenProfile(e, expert.id)} href="#">
                     {expert.Name}
                   </a>
                 </td>
